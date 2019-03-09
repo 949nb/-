@@ -64,6 +64,7 @@ function getSumMaxMin(arr) {
     var xxx = [sum, max, min];
     return xxx
 }
+//
+// 测试
+// console.log(getSumMaxMin(n));
 
-//测试
-console.log(getSumMaxMin(n));
