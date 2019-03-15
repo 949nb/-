@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组练习</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+    <script>
+        // 写一个函数，操作数组，返回一个新数组，新数组中只包含正数。
+        // var arr = [3, -1, 2, '饥人谷', true];
+        // function filterPositive(arr) {
+        //     let x = [];
+        //     arr.forEach(e => {
+        //         if (typeof e === 'number' && e % 1 === 0 && e >= 0) {
+        //             x.push(e)
+        //         }
+        //     });
+        //     return x;
+        // }
+        // alert(filterPositive(arr)) // 3,2
+
+        // 用 splice函数分别实现 push、pop、shift、unshift方法。
+        // function push(arr, value) {
+        //     arr.splice(arr.length, 0, value);
+        //     return arr.length;
+        // }
+        // function pop(arr){
+        //     arr.length = arr.length - 1;
+        // }
+        // alert(pop(arr))
+        // alert(arr)
+        // function pop(arr) {
+        //     arr.splice(arr.length - 1, 1);
+        //     return arr.length - 1;
+        // }
+        // alert(pop(arr))
+        // alert(arr)
+        // function shift(arr) {
+        //     arr.splice(0, 1);
+        //     return arr.length
+        // }
+
+        // function unshift(arr) {
+        //     arr.splice(0, 0, 'add');
+        //     return arr.length
+        // }
+        // alert(unshift(arr))
+        // alert(arr)
+
+
+        // 对以下代码 users中的对象，分别以 name 字段、age 字段、company 字段进行排序
+        // var users = [
+        //     { name: "John", age: 20, company: "Baidu" },
+        //     { name: "Pete", age: 18, company: "Alibaba" },
+        //     { name: "Ann", age: 19, company: "Tecent" }
+        // ]
+
+        // users.sort((v1, v2) => {
+        //     if (v1.name < v2.name) {
+        //         return -1;
+        //     }
+        //     if (v1.name > v2.name) {
+        //         return 1;
+        //     }
+        //     return 0;
+        // });
+        // console.log(users)
+
+        // users.sort((v1, v2) => {
+        //     if (v1.age < v2.age) {
+        //         return -1;
+        //     }
+        //     if (v1.age > v2.age) {
+        //         return 1;
+        //     }
+        //     return 0;
+        // });
+
+        // console.log(users)
+
+        // users.sort((v1, v2) => {
+        //     if (v1.company < v2.company) {
+        //         return -1;
+        //     }
+        //     if (v1.company > v2.company) {
+        //         return 1;
+        //     }
+        //     return 0;
+        // });
+
+        // console.log(users)
+
+
+        // 使用 JSON 对象实现一个简单的深拷贝函数(deepCopy)。
+        // function deepCopy(any) {
+        //     let a = JSON.stringify(any);
+        //     let b = JSON.parse(a)
+        //     return b
+        // }
+
+        // forEach 接受一个函数，这个函数的参数有三个（ele，index，arr）用来遍历数组。
+
+        // map接受一个函数，这个函数的参数是数组的value。map会返回一个新的数组。
+
+        // indexOf()方法返回在数组中可以找到一个给定元素的第一个索引，如果不存在，则返回 - 1。他接受两个参数，第一个是要查找的元素，第二个是从第几个开始找。
+
+        // 写补全sortString函数，实现字符串倒序
+
+        // function  sortString(str){
+        //     //补全
+        // // }
+        // var str = 'jirenguhungervalley'
+        // // var str2 = sortString(str)
+        // // console.log(str2) // 'yellavregnuhugnerij'
+
+        // function sortString(str) {
+        //     let arr = [];
+        //     for (let i = 0; i < str.length; i++) {
+        //         arr.push(str[i])
+        //     };
+        //     let x = arr.reverse();
+        //     return x.join("");
+        // }
+
+        // console.log(sortString(str))
+
+        // object
+
+        // // 求n的阶乘
+
+        // function jiecheng(num) {
+        //     if (num === 1 || num === 0) {
+        //         return 1
+        //     } if (num < 0) {
+        //         return -1
+        //     }
+        //     else {
+        //         return num * (jiecheng(num - 1));
+        //     }
+        // }
+
+        // // 求平方和
+
+
+        function sumOfSquares(num,num,num){
+            let result = 0
+            for(let key in arguments){
+                if(typeof arguments[key] !== 'number'){
+                    return 'false number'
+                }else{
+                    result += arguments[key]*arguments[key]
+                }
+            }
+            return result
+        }
+
+
+        var result = sumOfSquares(2, 3, 4)
+        var result2 = sumOfSquares(1, 3)
+
+        console.log(result)  //29
+        console.log(result2)  //10
+
+
+
+        // function sumOfSquares(num,num2,num3) {
+        //     if(arguments.length === 2){
+        //         return (num*num)+(num2*num2)
+        //     }else{return (num*num)+(num2*num2)+(num3*num3)}
+        // }
+
+
+        // 写一个函数squireArr，其参数是一个数组，作用是把数组中的每一项变为原值的平方
+
+        // var arr = [3, 4, 6]
+        // function squireArr(arr) {
+        //     for (let i = 0; i < arr.length; i++) {
+        //         arr[i] = arr[i] * arr[i]
+        //     }
+        //     return arr
+        // }
+        // squireArr(arr)
+        // console.log(arr)  // [9, 16, 36]
+
+        // 写一个函数squireArr，其参数是一个数组，返回一个新的数组，新数组中的每一项是原数组对应值的平方，原数组不变
+
+        // var arr = [3, 4, 6]
+        // function squireArr(arr) {
+        //     var a = arr.map((e)=>{
+        //         return e*e
+        //     })
+        //     return a
+        // }
+        // var arr2 = squireArr(arr)
+        // console.log(arr)  // [3, 4, 6]
+        // console.log(arr2)  // [9, 16, 36]
+
+        // function x (arr){
+        //     var a = JSON.stringify(arr)
+        //     var b = JSON.parse(a)
+        //     return b
+        // }
+
+    </script>
+</body>
+
+</html>
