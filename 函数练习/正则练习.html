@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正则表达式练习</title>
+</head>
+
+<body>
+    <script>
+        // 写一个函数isValidUsername(str)，判断用户输入的是不是合法的用户名（长度6-20个字符，只能包括字母、数字、下划线）。
+
+        function isValidUsername(str) {
+            if (str.match(/^\w{6,20}$/) !== null) {
+                return "您输入的是合法的用户名"
+            } else {
+                return "不合法"
+            }
+        }
+
+        // 写一个函数isPhoneNum(str)，判断用户输入的是不是手机号。
+
+        function isPhoneNum(str) {
+            if (str.match(/^1[3578]\d{9}$/) !== null) {
+                return "您输入的是合法的电话号"
+            } else {
+                return "不合法"
+            }
+        }
+
+        // 写一个函数isEmail(str)，判断用户输入的是不是邮箱。
+
+        function isEmail(str) {
+            if (str.match(/^\S+?@\S+?.com$/) !== null) {
+                return "您输入的是合法的邮箱地址"
+            } else {
+                return "不合法"
+            }
+        }
+
+        // 写一个函数trim(str)，去除字符串两边的空白字符。
+
+        function trim(str) {
+            return str.replace(/^\s+|\s+$/g, '')
+        }
+
+        // \d，\w，\s，[a - zA - Z0 - 9]，\b，.，*，+，?，x{ 3 } ，^，$分别是什么 ?
+
+        // \d 代表数字
+        // \w 单词字符，字母，数字，下划线
+        // \s 空字符
+        // [a - zA - z0 - 9] 中括号中表示一个字符，也就是a - zA - z0 - 9其中的一个
+        // \b 单词的边界
+        //     .除了回车和换行
+        //     * 出现零次或多次
+        //     + 出现一次或多次
+        //     ? 出现0次或者多次
+        //     x{ 3 } 出现3次
+        //     ^ 从。。。开始
+        //     $ 从。。。结束
+    </script>
+</body>
+
+</html>

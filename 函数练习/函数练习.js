@@ -151,3 +151,25 @@ function filterPositive(arr){
         return e>=0
     })
 }
+
+// 实现一个节流函数。
+var timer
+function hifanc(){
+        if(timer){
+            clearTimeout(timer)
+        }
+        timer = setTimeout(()=>{
+            console.log('我是最后一个执行的函数！')
+        },1000)
+}
+
+或者
+function throttle(fn, delay) {
+    var timer = null
+    return function(){
+        clearTimeout(timer)
+        timer = setTimeout(function(){ 
+            fn(arguments)
+        }, delay)
+    }
+}
