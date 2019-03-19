@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dom练习</title>
+    <style>
+        ul>li{
+            cursor: pointer;
+        }
+        .img-preview{
+            transition: all 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <ul class="ct">
+        <li data-img="http://cdn.jirengu.com/book.jirengu.com/img/11.jpg">鼠标放置查看图片1</li>
+        <li data-img="http://cdn.jirengu.com/book.jirengu.com/img/13.jpg">鼠标放置查看图片2</li>
+        <li data-img="http://cdn.jirengu.com/book.jirengu.com/img/14.jpg">鼠标放置查看图片3</li>
+    </ul>
+    <div class="img-preview"></div> -->
+
+
+    <ul class="ct">
+            <li>这里是</li>
+            <li>饥人谷1</li>
+            <li>饥人谷32</li>
+            <li>饥人谷3</li>
+            <li>饥人谷4</li>
+            <li>饥人谷5</li>
+            <li>饥人谷6</li>
+        </ul>
+    <script>
+        // 补全代码，要求：当鼠标放置在li元素上，会在img-preview里展示当前li元素的data-img对应的图片。
+        // var li = document.querySelectorAll('ul > li')
+        // var imgPre = document.querySelector('.img-preview')
+
+        // for(let i=0;i<li.length;i++){
+        //     li[i].addEventListener('mouseover',function(){
+        //         var data = li[i].getAttribute('data-img');
+        //         console.log(data)
+        //         imgPre.innerHTML = `<img src="${data}">`
+        //     })
+        // }
+
+        // 有如下代码，要求当点击每一个元素li时控制台展示该元素的文本内容。不考虑兼容
+        var ct = document.querySelectorAll('.ct > li')
+        console.log(ct)
+        for(let i = 0;i<ct.length;i++){
+            ct[i].addEventListener('click',(x)=>{
+                var text = x.target.innerText
+                console.log(text)
+            })
+        }
+        
+    </script>
+</body>
+
+</html>
