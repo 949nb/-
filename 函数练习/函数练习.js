@@ -153,23 +153,58 @@ function filterPositive(arr){
 }
 
 // 实现一个节流函数。
-var timer
-function hifanc(){
-        if(timer){
-            clearTimeout(timer)
-        }
-        timer = setTimeout(()=>{
-            console.log('我是最后一个执行的函数！')
-        },1000)
-}
+// var timer
+// function hifanc(){
+//         if(timer){
+//             clearTimeout(timer)
+//         }
+//         timer = setTimeout(()=>{
+//             console.log('我是最后一个执行的函数！')
+//         },1000)
+// }
 
-或者
-function throttle(fn, delay) {
-    var timer = null
-    return function(){
-        clearTimeout(timer)
-        timer = setTimeout(function(){ 
-            fn(arguments)
-        }, delay)
-    }
-}
+// 或者
+// function throttle(fn, delay) {
+//     var timer = null
+//     return function(){
+//         clearTimeout(timer)
+//         timer = setTimeout(function(){ 
+//             fn(arguments)
+//         }, delay)
+//     }
+// }
+
+// 如下代码输出多少？如果想输出3，那如何改造代码？
+
+// var fnArr = [];
+// for (var i = 0; i < 10; i ++) {
+//   fnArr[i] =  function(){
+//     return i
+//   };
+// }
+// console.log(fnArr[3]())
+
+// var fnArr = [];
+// for (let i = 0; i < 10; i ++) {
+//   fnArr[i] = function(){
+//       return i
+//   }
+// }
+// console.log(fnArr[3]())
+
+// 补全代码，实现数组按姓名、年纪、任意字段排序。
+
+// var users = [
+//   { name: "John", age: 20, company: "Baidu" },
+//   { name: "Pete", age: 18, company: "Alibaba" },
+//   { name: "Ann", age: 19, company: "Tecent" }
+// ]
+
+// users.sort(byField('age'))
+// users.sort(byField('company'))
+
+// function byField(str){
+//     for(let i=0;i<users.length;i++){
+//         return (users[i].str - users[i+1].str)
+//     }
+// }

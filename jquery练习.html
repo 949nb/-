@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{height: 100vh;position: relative;color:#666666;}
+    ul,li{list-style: none;}
+    .bigWrapper{
+      position: absolute;
+      top:0;bottom:0;left:0;right:0;margin:auto;
+      width: 750px;
+    }
+    .oneRow{
+      display: flex;
+      justify-content: center;
+    }
+    ul{
+      display: flex;
+      margin: 0px 10px;
+    }
+    li{
+      display:flex;
+      flex-direction: column;
+      margin: 5px 20px;
+      border: 1px solid #ddd;
+      box-shadow: 1px 1px 4px .1px #ddd;
+      padding: 10px;
+      position:relative;
+    }
+    li>.cover{
+      background: rgba(0,0,0,0.3);
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top:0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    li>.cover.hide{
+      display:none;
+    }
+    
+    li>.rmb{
+      margin: 5px 0px;
+      font-size: 14px;
+      color: blue;
+    }
+    button{
+      font-size: 16px;
+      padding: 2px 8px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="bigWrapper">
+    <h1>美图生成</h1>
+    <div class="content">
+      <div class="oneRow">
+          <ul class='picbox'>
+            <li class='picbox-ct'>
+              <div class="cover hide">
+                <button class="remove">删除</button>
+              </div>
+              <img src="https://picsum.photos/200/200/?image=1" alt="">
+              <span class='name'>RockMan</span>
+              <span class='rmb'>¥699.00</span>
+            </li>
+            <li class='picbox-ct'>
+              <div class="cover hide">
+                <button class="remove">删除</button>
+              </div>
+              <img src="https://picsum.photos/200/200/?image=2" alt="">
+              <span class='name'>FunkMan</span>
+              <span class='rmb'>¥299.00</span>
+            </li>
+            <li class='picbox-ct'>
+              <div class="cover hide">
+                <button class="remove">删除</button>
+              </div>
+              <img src="https://picsum.photos/200/200/?image=3" alt="">
+              <span class='name'>JazzMan</span>
+              <span class='rmb'>¥499.00</span>
+            </li>
+          </ul>
+      </div>
+    </div>
+    <button class='add'>添加</button>
+    <button class='edit'>编辑</button>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+  <script>
+    function editData($obj){
+      var newR = $obj
+      var rmb = $(newR).find('.rmb')
+      rmb.each(function(idx,val){
+        var rand = Math.floor(Math.random()*100)
+        $(val).text('¥'+rand)
+      })
+      var name = $(newR).find('.name')
+      name.text('柯蓝 黄金手 猴哥款')
+      var url = $(newR).find('img')
+      url.each(function(idx,val){
+        var rand = Math.floor(Math.random()*100)
+        $(val).attr('src','https://picsum.photos/200/200/?image='+rand)
+      })
+      
+      return $(newR)
+      
+    }
+    
+    $('.add').on('click',function(){
+      var $oneRow =$('.oneRow').clone()
+      var newRow = editData($oneRow[0])
+      $(newRow).appendTo('.content')
+    })//添加一行box
+    
+    $('.edit').on('click',function(){
+      $('.cover').toggleClass('hide')
+    })//编辑box
+    
+    $('.content').on('click','.remove',function(e){
+      console.log(e)
+      $(this).parents('.picbox-ct').remove()
+    })
+  
+  
+  
+  
+  
+  </script>
+  
+  
+
+</body>
+</html>

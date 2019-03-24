@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  <style>
+    .mod-tad {
+      margin: 20px;
+    }
+
+    .mod-tad .header {
+      display: flex;
+    }
+
+    .mod-tad .header .tab {
+      padding: 4px 20px;
+      border-top: 1px solid #ccc;
+      border-right: 1px solid #ccc;
+      background: #ddd;
+      cursor: pointer;
+    }
+
+    .mod-tad .header .tab:first-child {
+      border-left: 1px solid #ccc;
+    }
+
+    .mod-tad .header .tab.active {
+      background: #fff;
+    }
+
+    .mod-tad .content {
+      border: 1px solid #ccc;
+      background: #fff;
+    }
+
+    .mod-tad .content .panel {
+      padding: 30px;
+      background: #fff;
+      display: none;
+    }
+
+    .mod-tad .content .panel.active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="mod-tad">
+    <div class="header">
+      <div class="tab active">1</div>
+      <div class="tab">2</div>
+      <div class="tab">3</div>
+      <div class="tab">4</div>
+    </div>
+    <div class="content">
+      <div class="panel active">panel1</div>
+      <div class="panel">panel2</div>
+      <div class="panel">panel3</div>
+      <div class="panel">panel4</div>
+    </div>
+  </div>
+
+  <div class="mod-tad">
+    <div class="header">
+      <div class="tab active">1</div>
+      <div class="tab">2</div>
+      <div class="tab">3</div>
+      <div class="tab">4</div>
+    </div>
+    <div class="content">
+      <div class="panel active">panel1</div>
+      <div class="panel">panel2</div>
+      <div class="panel">panel3</div>
+      <div class="panel">panel4</div>
+    </div>
+  </div>
+  <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script>
+    $('.mod-tad .tab').on('click', function (e) {
+      $(this).addClass('active')
+        .siblings()
+        .removeClass('active')
+      console.log($(this).index())
+      $(this).parents('.mod-tad').find('.panel')
+        .eq($(this).index())
+        .addClass('active')
+        .siblings().removeClass('active')
+    })
+  </script>
+</body>
+
+</html>
