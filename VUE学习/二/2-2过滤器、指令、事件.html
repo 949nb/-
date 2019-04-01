@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .xxx{
+      background: red;
+      border-radius: 5px;
+      height: 30px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h2>过滤器</h2>
+  <span id="dateApp">
+    <!-- 过滤器 "|"后面接的是过滤器的名字 -->
+    {{date}}
+    <br>
+    <br>
+    {{date | formatDate}}
+    <hr>
+    <h2>指令和事件</h2>
+    <span>v-text指令</span>
+    <div v-text="apple"></div>
+    <div v-html='banana'></div>
+    <div v-bind:class='className'>111</div>
+    <br>  
+    <div :class='className'>111</div>
+
+
+
+    <button v-on:click = 'count'>我被添加了click事件   {{countNum}}</button>
+    <button @dbclick = 'dbcount'>我被添加了click事件   {{countNum2}}</button>
+  </span>
+  
+
+
+
+
+  <!-- 环境的搭建 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    //在页面中，实时显示当前的时间
+    //在月份，日期，小时小于10的时候，补0
+    var plusDate = function (val) {
+      return val<10? '0'+val:val
+    }
+    var app = new Vue({
+      el: '#dateApp',
+      data:{
+        date: new Date(),
+        apple: '苹果',
+        banana: '<span style="color:red">香蕉</span>',
+        className: 'xxx',
+        countNum: 0,
+        countNum2: 1
+      },
+      methods:{
+        count:function(){
+          this.countNum = this.countNum + 1
+        },
+        dbcount:function(){
+          this.countNum2 = this.countNum2 + 1
+        }
+      },
+      filters:{
+        //这里的val就是需要过滤的数据
+        formatDate:function(val){
+          //将字符串转化为date
+          var date = new Date(val);
+          var year = date.getFullYear();
+          var month = plusDate(date.getMonth()+1);
+          var day = plusDate(date.getDate());
+          var hours = plusDate(date.getHours());
+          var min = plusDate(date.getMinutes());
+          var sec = plusDate(date.getSeconds());
+          //将整理好的数据返回
+          return year + '/' + month +'/'+day+'   '+hours+':'+min+':'+sec
+        }
+      },
+      mounted:function(){
+        var _this = this;
+        this.timer = setInterval(function(){
+          _this.date = new Date()
+        },1000)
+      },
+      beforeDestroy:function(){
+        //清除定时器
+        if(this.timer){
+          clearInterval(this.timer)
+        }
+      }
+    })
+
+    //过滤器 {{ data | filter | filter2 }} 可以写无数个。
+    //过滤器中传入的参数，第一个参数和第二个参数，对应filter中的第二个和第三个参数
+    //vue中 再文本插值的尾部，加入管道符 "|" 对数字进行过滤，格式化文本，字母大小写， 货币逗号分分隔，都会用到。
+    
+    //指令和事件
+    //v-text 和 {{}}的作用都是一样的，都是向页面解析文本。
+    //v-html 页面解析html
+    //v-bind 绑定活的属性  <div v-bind:class='xxx'>
+    //v-on  绑定事件监听器  => vue中用到的方法，都放到methods中。
+
+    //语法糖
+    // v-on ------> @
+    // v-bind ------> :
+  
+  </script>  
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>数据绑定、指令、事件</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 文本插值的用法 -->
+    {{msg}}
+    <br><!-- 可以进行简单的运算/三元运算符 -->
+    {{6+6}}
+    <br>
+    {{6>3? msg:a}}
+    <br>
+    <!-- {{if(6>3){msg}}}文本插值只支持单个表达式 -->
+  </div>
+
+
+
+
+
+  <!-- 环境的搭建 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: "#app",//用于指定页面中已经存在的DOM元素，挂载到DOM中。内容可以是DOM，可以是标签，也可以是CSS语法。
+      data: {
+        msg:'vue学习开始了!',
+        a:'2222'
+      },//声明一个需要双向绑定的数据
+      created: function(){
+        console.log('VUE实例创建完成，还未挂载到DOM')
+      },
+      mounted:function(){
+        console.log('已经挂载到DOM')
+      }
+    });//创建一个Vue实例
+
+    console.log(app.$el)//访问实例中的一些属性，可以使用app.$el/app.$data。
+    console.log(app.msg)//访问实例中data的属性，不需要加$符号。直接app.msg
+
+    //-----生命周期
+    //created 实例创建完成后调用，但还尚未挂载。
+    //mounted el 刚刚挂载到实例上后调用，一般第一个业务逻辑会在这里开始。
+    //beforeDestroy 实例销毁之前调用，主要解绑一些东西会用到。
+
+    //----文本插值和表达式
+    //     {{}}       双大括号进行文本插值
+
+  </script>
+</body>
+</html>
