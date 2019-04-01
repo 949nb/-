@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>购物车价格sum</title>
+</head>
+<body>
+  <div id="app">
+    两个购物车的总价为：{{prices}}
+  </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el:'#app',
+      data:{
+        package1:[
+          {
+            name:'ipad',pirce:3999,count: 2
+          },
+          {
+            name:'iPhone6',pirce:4999,count: 6
+          }
+        ],
+        package2:[
+          {
+            name:'apple',pirce:11,count:100
+          },
+          {
+            name:'ipad',pirce:3999,count: 2
+          }
+        ]
+      },
+      computed:{
+        prices: function(){
+            var pirces = 0;
+            for(var i =0;i<this.package1.length;i++){
+              pirces += this.package1[i].pirce * this.package1[i].count
+            }
+            for(var i =0;i<this.package2.length;i++){
+              pirces += this.package1[i].pirce * this.package1[i].count
+            }
+            return pirces
+          }
+        }
+    })
+    //计算属性 computed 和data同级，其中的key也可以与{{ }}双向绑定。
+    //计算属性还可以依赖多个Vue实例中的数据
+  </script>
+</body>
+</html>
