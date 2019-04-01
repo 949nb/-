@@ -14,6 +14,12 @@
     <br>
     <!-- 在文本插值中，遇到复杂的逻辑应当使用计算属性。 -->
     {{ reverseText }} <---使用计算属性
+    <br>
+    <br>computed计算属性获取时间戳<br>
+    {{ now }}
+    <br>
+    methods方法设置时间戳<br>
+    {{ getNow() }}
   </div>
 
 
@@ -30,9 +36,23 @@
       computed:{
         reverseText:function(){
           return this.text.split(',').reverse().join(',')
+        },
+        now:function(){
+          return Date.now()
         }
+      },
+      methods:{
+        getNow:function(){
+          return Date.now()
+        }
+      },
+      mounted:function(){
+
       }
     })
+
+    //方法和计算属性的区别：方法在页面渲染的时候，会重新执行，并不依赖缓存。计算属性依赖缓存。
+    //方法比较灵活，计算属性在遍历大数组和做大量运算的时候使用。
   </script>
 </body>
 </html>
