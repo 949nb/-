@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>内置基本指令</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 1. v-cloak 基本指令 -->
+    <!-- 解决页面初始化慢导致页面闪动 -->
+      <p v-cloak>{{msg}}</p>
+
+
+    <!-- 2. v-once 基本指令 -->
+    <!-- 定义他的元素或组件只渲染一次 -->
+      <p v-once>{{onceDate}}</p>
+
+  </div>
+
+
+
+  <!-- 环境的搭建 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        msg:'村里有个姑娘叫小芳～',
+        onceDate:'长得美丽又善良。'
+      }
+    })
+  </script>
+</body>
+</html>

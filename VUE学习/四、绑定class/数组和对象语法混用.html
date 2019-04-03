@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .divStyle{
+      background: red;
+      height: 200px;
+      width: 200px;
+    }
+    .divblack{
+      background: blue;
+      height: 200px;
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h2>绑定class对象语法，可以直接写在class里，也可以写在计算属性中</h2><br>
+    <p>绑定 class对象语法，key为类名，val为布尔值</p>
+    <div :class = "com">
+
+    </div>
+    <button @click = 'changeColor'>点我切换</button>
+    <br>
+    <h2>绑定class数组语法，可以直接写在class里，也可以写在计算属性中</h2><br>
+    <p>绑定 class对象语法，数组成员对应类名</p>
+    <div :class = "[activeClass,errorClass]">
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    //点击一个按钮 来回切换背景色
+    var app = new Vue({
+      el:'#app',
+      data:{
+        red: true,
+        black: false,
+        activeClass: 'active',
+        errorClass: 'error'
+      },
+      methods:{
+        changeColor:function(){
+          this.red = !this.red
+          this.black = !this.black
+        }
+      },
+      computed:{
+        com:function(){
+          return {
+            divStyle: this.red,
+            divblack: this.black
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body><!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>内置基本指令</title>
+  </head>
+  <body>
+    <div id="app">
+      <span>v-for的用法:1.遍历多个对象的用法</span><br>
+
+      <ul>
+        <li v-for='val in vueMethods'> {{val.name}} </li>
+      </ul>
+
+      <ul>
+          <li v-for='(val,index) in vueMethods'>{{index}}---{{val.name}} </li>
+      </ul>
+      <br>
+      <span>v-for的用法:1.遍历多个对象的用法</span><br>
+      <span v-for='val in nvshen'>{{val}}</span><br>
+      <span v-for='(val,key,index) in nvshen' > {{val}}-{{key}}--{{index}} </span>
+      
+    </div>
+  
+  
+  
+    <!-- 环境的搭建 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          vueMethods:[
+            {name: '多思考'},
+            {name: '多练习'},
+            {name: '听课'}
+          ],
+          nvshen:{
+            girl1: '高圆圆',
+            girl2: '范冰冰',
+            girl3: '佟丽娅'
+          }
+        },
+        
+      })
+    </script>
+  </body>
+  </html>
+  
+</body>
+</html>

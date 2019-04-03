@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>内置基本指令</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 条件渲染 v-if v-else-if v-else -->
+    <!-- v-if 后面接等于好，等号后面的内容必须是布尔值,-->
+    <p v-if="6<3"> {{apple}} </p>
+    <p v-else-if="9>6"> {{pineapple}} </p>
+    <p v-else> {{bannana}} </p>
+
+    <p>v-if的实例用法</p><!------  点击按钮，实现用户名输入框和密码输入框的切换,对不想让其复用的元素标签加入key  ------>
+    <div>
+      <div v-if="type ==='name'"> 用户名:<input type="text" placeholder="请输入用户名" key="pdd"></div>
+      <div v-else>  密码: <input type="text" placeholder="请输入密码" key="psd"></div>
+    </div>
+    <button @click ='toggleType'>提交</button>
+
+    <hr>
+    <p>v-if和v-show的比较</p>
+    <span>v-if改变DOM结构。v-show只渲染一次，改变的只是元素的display的属性。</span>
+    <p v-show='9>a'>被渲染</p>
+  </div>
+
+
+
+  <!-- 环境的搭建 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        msg:'村里有个姑娘叫小芳～',
+        onceDate:'长得美丽又善良。',
+        apple:'apple',
+        bannana: 'bannana',
+        pineapple: 'pineapple',
+        type:'name',
+        a: 8
+      },
+      methods:{
+        toggleType:function(){
+          //三目运算符
+          this.type = (this.type === 'name'?'password':'name')
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>内置基本指令</title>
+  </head>
+  <body>
+    <pre>
+      push()方法是往数组的最后一位添加
+      pop()方法是把数组的最后一位移除，返回值是被删除的元素
+      shift()方法是删除数组的第一位，返回值是被删除的元素
+      unshift()方法是往数组的第一位添加成员，返回值为新的数组的长度
+      splice()可以添加或者删除函数--返回删除的元素
+              这个函数有三个参数：第一个参数表示 开始操作的位置，第二个参数表示 要删除的长度，第三个参数为可选参数，有则添加，没有则为删除。
+      sort()排序
+      reverse()重新排序
+    </pre>
+    <div id="app">
+      <div v-for='(val,key) in arr'>{{key}} {{val}}</div>
+      <button @click='sortArr'>点我排序</button>
+      <button @click='reverseArr'>点我反转</button>
+      <button @click='changeOne'>改变数组的指定项</button>
+      <button @click='changeArrLength'>改变数组的长度</button>
+    </div>
+  
+  
+  
+    <!-- 环境的搭建 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          arr:['book','pen','pencil']
+        },
+        methods:{
+          sortArr:function(){
+            //从小到大排序
+            this.arr.sort(function(a,b){
+              return a.length - b.length
+            })
+          },
+          reverseArr:function(){
+            return this.arr.reverse()
+          },
+          changeOne:function(){
+            this.arr[0] = 'car' ;
+          },
+          changeArrLength:function(){
+            this.arr.splice(2)
+          }//改变数组的长度
+        }
+      })
+      Vue.set(app.arr,0,'aaaaa')//Vue自带的方法,改变数组的指定项
+    </script>
+</body>
+</html>
