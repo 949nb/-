@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>组件的使用方法</title>
+</head>
+<body>
+<div id='app' style="background:#ddd;height: 400px;border: 5px solid; text-align:center;">
+  <h3>我是父组件</h3>
+  <app-component msg="我是来自父组件的内容"></app-component>
+  <hr>使用v-bind进行数据的动态绑定
+  <input type="text" v-model='parentmsg'>
+  <bind-component :msg="parentmsg"></bind-component>
+
+</div>
+
+
+
+
+  <!-- 环境的搭建 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    // Vue.component(tag,{
+    //   template:'<div></div>'
+    // })
+
+    var app = new Vue({
+      el:"#app",
+      data:{
+        parentmsg:'xxxxxxxxxxxxxxxxxxx'
+      },
+      components:{
+        "app-component":{
+          props:['msg'],//接受一个数组，主要用来接受父组件给我们传递的内容
+          template:"<div style='border: 3px solid red;'>{{msg}}</div>",
+          data:function(){//是组件自己的数据
+            return {
+              
+            }
+          }
+        },
+        "bind-component":{
+          props:['msg'],//接受一个数组，主要用来接受父组件给我们传递的内容
+          template:"<div style='border: 3px solid red;'>{{msg}}</div>",
+          data:function(){//是组件自己的数据
+            return {
+              
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

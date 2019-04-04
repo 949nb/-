@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- v-model是实现vue数据的双向绑定的方法 -->
+    v-model和textarea的用法<br>
+    <input type="text" v-model="value"><br>
+    {{value}}
+    <br>
+    <textarea name="" id="" cols="30" rows="3" v-model='msg'>我是多行文本的初始化值</textarea><br>
+    {{msg}}
+    <br><hr>
+    单选框
+    <br>
+    <input type="radio" name="" id="" :checked='oneRadio'>单个单选框
+    <br> 
+    多个单选框
+    毛蛋<input type="radio" name="check" value="毛蛋" v-model="checkName">
+    狗蛋<input type="radio" name="check" value="狗蛋" v-model="checkName">
+    混蛋<input type="radio" name="check" value="混蛋" v-model="checkName">
+    <br>  现在选中的是---{{checkName}}
+    <hr>
+    <input type="checkbox" name="" id="" >
+    <br>
+    单选的下拉框:
+    <select name="" id="" v-model='selected'  >
+      <option value="毛蛋">毛蛋</option>
+      <option value="狗蛋">狗蛋</option>
+      <option value="混蛋">混蛋</option>
+    </select>
+    {{selected}}
+    <hr>
+    单选按钮
+    <input type="radio" v-model='picked' :value='x'>
+
+  </div>
+
+  <!-- 环境的搭建 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el:'#app',
+      data:{
+        value:'',
+        msg: '',
+        oneRadio: true,
+        checkName: '毛蛋',
+        selected:'',
+        picked: true
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>内置基本指令</title>
+  </head>
+  <body>
+   
+    <div id="app">
+      点击次数：{{count}}
+      <button @click='handle'>点击我+1</button>
+      <button @click='handle()'>点击我+8</button>
+    </div>
+  
+  
+  
+    <!-- 环境的搭建 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          count: 0
+        },
+        methods:{
+          handle:function(a){
+            console.log(a)
+            this.count += 1;
+          }
+        }
+      })
+    </script>
+</body>
+</html>
