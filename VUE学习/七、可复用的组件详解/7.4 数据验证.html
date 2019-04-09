@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>数据验证</title>
+</head>
+<body>
+<div id='app' style="background:#ddd;height: 400px;border: 5px solid; text-align:center;">
+  <h3>你好，这是我的APP</h3>
+  <my-component mymsg='lalala'></my-component> 
+  <type-component :a='a' :b='b' :c='c' :d='d' :e="e" :f='f' :g="g"> </type-component>
+ 
+
+
+
+</div>
+
+
+
+
+  <!-- 环境的搭建 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    Vue.component('myComponent',{
+      props:['mymsg'],
+      template:'<div>我是一个组件{{mymsg}}</div>',
+      data:function(){
+        return{
+          abc:this.mymsg
+        }
+      }
+    })
+    Vue.component('type-component',{
+      props:{
+        a: Number,
+        b:[String,Number],
+        c:{
+          type: Boolean,
+          default:true
+        },
+        d:{
+          type: Number,
+          required:true
+        },
+        e:{
+          type:Array,
+          default:function(){
+            return [666]
+          }
+        },
+        // 自定义验证函数
+        f:{
+          validator:function(val){
+            return val>10
+          }
+        },
+        g:{
+          type: Function
+        }
+      },
+      template:'<div>{{a}}-----{{b}}----{{c}}----{{d}}-----{{e}}----{{f}}---{{g}}</div>',
+      data:function(){
+        return{
+        }
+      }
+    })
+    var app = new Vue({
+      el:'#app',
+      data:{
+        a: 1,
+        b: 666,
+        c: true,
+        d: 12313123,
+        e: [],
+        f: 88,
+        g: console.log()
+      }
+    })
+    
+  </script>
+</body>
+</html>

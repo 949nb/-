@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>组件通信</title>
+  <style>
+    #app{background:#ddd;height: 400px;border: 5px solid; text-align:center;}
+  </style>
+</head>
+<body>
+<div id='app'>
+  <h3>你好，这是我的APP</h3>
+    <component :is="thisView">
+
+    </component>
+    <button @click="handleView('A')">第一句</button>
+    <button @click="handleView('B')">第二句</button>
+    <button @click="handleView('C')">第三句</button>
+    <button @click="handleView('D')">第四句</button>
+</div>
+  <!-- 环境的搭建 -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    //需求：通过点击不同的按钮切换不同的视图
+    Vue.component("compA",{
+      template:"<div>离离原上草</div>"
+    })
+    Vue.component("compB",{
+      template:"<div>一岁一枯荣</div>"
+    })
+    Vue.component("compC",{
+      template:"<div>一火烧不尽</div>"
+    })
+    Vue.component("compD",{
+      template:"<div>春风吹又生</div>"
+    })
+
+    var app = new Vue({
+      el:'#app',
+      data:{
+        thisView:'compA'
+      },
+      methods: {
+        handleView:function(tag){
+          this.thisView = "comp"+tag;
+        }
+      },
+    })
+    
+  </script>
+</body>
+</html>

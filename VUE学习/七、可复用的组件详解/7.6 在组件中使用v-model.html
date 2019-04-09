@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>组件通信</title>
+</head>
+<body>
+<div id='app' style="background:#ddd;height: 400px;border: 5px solid; text-align:center;">
+  <h3>你好，这是我的APP</h3>
+  您现在的银行卡余额是{{total}}
+  <!-- <son-component @change='handleTotal'> </son-component> -->
+  <son-component v-model='total'> </son-component>
+
+
+</div>
+
+<!-- 想要在自组件中向父组件传递数据，那么首先要在子组件的身上创建一个自定义事件，
+然后在自组件的方法中用$emit触发事件，第一个参数是自定义的函数名，第二个就是要传递的参数，
+第三，在自定义事件中用一个函数来接受。 -->
+
+
+  <!-- 环境的搭建 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    //通过加号按钮和减号按钮来给父组件传递数据
+    Vue.component('son-component',{
+      props:[],
+      template:`<div>
+                  <button @click='handleincrease'>+1000</button>
+                </div>`,
+      data:function(){
+        return{
+          count: 2000
+        }
+      },
+      methods:{
+        handleincrease:function(){
+          this.count = this.count + 1000
+          this.$emit('input',this.count)
+        }
+
+      }
+    })
+    var app = new Vue({
+      el:'#app',
+      data:{
+        total:2000
+      },
+      methods:{
+        handleTotal:function(val){
+          this.total = val
+        }
+      }
+    })
+    
+  </script>
+</body>
+</html>

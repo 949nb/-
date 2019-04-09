@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>兄弟组件之间的通信</title>
+</head>
+<body>
+<div id='app'>
+  <my-acomponent ref='a'></my-acomponent>
+  <my-bcomponent ref='b'></my-bcomponent>
+  <hr>
+  <child-component ref='c'> </child-component>{{msg}}
+  <hr>
+  <button @click='getchilddata'>我是父组件的按钮，我要拿到子组件的内容</button>{{forChild}}
+
+  
+</div>
+
+
+
+
+  <!-- 环境的搭建 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    // Vue.component(tag,{
+    //   template:'<div></div>'
+    // })
+    Vue.component('my-acomponent',{
+      template:'<div><button @click="handle">点击我=> b组件 传数据</button></div>',
+      data:function(){
+        return {
+          aaa: '我是来自a组件的内容',
+          msg: '我是a中的massage'
+        }
+      },
+      methods:{
+        handle:function(){
+          this.$root.bus.$emit('lala',this.aaa)
+        }
+      }
+    })
+    Vue.component('my-bcomponent',{
+      template:'<div>我是b组件</div>',
+      created:function(){
+        this.$root.bus.$on('lala',function(val){
+          console.log(val)
+        })
+      },
+      data:function(){
+        return {
+          msg: '我是b中的massage'
+        }
+      }
+    })
+    Vue.component('child-component',{
+      template:'<button @click="setFD">通过点击我 修改我父亲的数据</button>',
+      methods:{
+        setFD:function(){
+          this.$parent.msg = "数据已经修改了"
+        }
+      },
+      data:function(){
+        return {
+          msg: '我是c中的massage'
+        }
+      }
+    })
+    var app = new Vue({
+      el: "#app",
+      data:{
+        bus: new Vue(),
+        msg: '数据还未修改',
+        forChild:'还未修改数据'
+
+      },
+      methods:{
+        getchilddata:function(){
+          this.forChild = this.$refs.a.msg
+        }
+      }
+    })
+  </script>
+</body>
+</html>
