@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+<body>
+  <div id="todo-list-example">
+    <form @submit.prevent='addNewTodo'>
+      <label for="new-todo">Add a todo</label>
+      <input id='new-todo'
+             v-model='newTodoText'
+             type="text"
+             autocomplete="off">
+      <button>Add</button>
+    </form>
+    <ul>
+      <li is='new-todo-list'
+          v-for="(todo,index) in todos"
+          :title="todo.title"
+          @remove=(todos.splice(index,1))
+          >
+        
+      </li>
+    </ul>
+  </div>
+  
+  
+  
+  
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+  <script>
+    Vue.component('new-todo-list',{
+      template:`<li>
+                  {{title}}
+                  <button @click="$emit(\'remove\')">Remove</button>
+                </li>`,
+      props:['title']
+    })
+    
+    new Vue({
+      el:'#todo-list-example',
+      data:{
+        newTodoText: '',
+        todos:[
+          {
+            id:0,
+            title:'第一项任务'
+          },
+          {
+            id:1,
+            title:'第二项任务'
+          },
+          {
+            id:2,
+            title:'第三项任务'
+          }
+        ]
+      },
+      methods:{
+        addNewTodo:function(){
+          this.todos.push({
+            id: this.todos.id++,
+            title: this.newTodoText
+          })
+          this.newTodoText = ''
+        }
+      }
+    })
+    
+    
+    
+  </script>
+</body>
+</html>
